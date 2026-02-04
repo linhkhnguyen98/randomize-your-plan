@@ -1,0 +1,15 @@
+.restaurent-box{
+    background-color: rgb(236, 199, 205);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.restaurent-header{
+    background-color: brown;
+}
+.restaurent-table{
+    background-color: aqua;
+}
+.restaurent-table-header{
+    background-color: rgb(104, 104, 237);
+}

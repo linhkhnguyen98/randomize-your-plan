@@ -1,0 +1,16 @@
+.activies-box{
+    background-color: rgb(236, 199, 205);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.activities-header{
+    background-color: brown;
+    
+}
+.activities-table{
+    background-color: aqua;
+}
+.activities-table-header{
+    background-color: rgb(104, 104, 237);
+}

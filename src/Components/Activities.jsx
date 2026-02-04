@@ -9,13 +9,16 @@ const Activities = () => {
               Things to do
             </tr>
             <tr className='activities-table-header'>
-              List
+              <div className='activities-list-header'>
+                <div className='list-title1'>List</div>
+                <button className='btn1'>Add</button>
+              </div>
             </tr>
             <tr>
-              <td>hiking</td>
+              Activity 1
             </tr>
-            <tr>
-              <td>fishing</td>
+              <tr>
+              Activity 2
             </tr>
           </table>
       </div>

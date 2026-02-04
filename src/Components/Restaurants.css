@@ -1,15 +1,44 @@
-.restaurent-box{
+.restaurant-box{
     background-color: rgb(236, 199, 205);
     width: 100%;
+    font-size: 1.3em;
+}
+.restaurant-header{
+    background-color: rgb(235, 142, 142);
+    font-size: 1.4em;
+}
+
+.restaurant-list-header{
+    width: 100%;    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-title2 {
+    flex: 1;
+    text-align: center;
+}
+
+.btn2{
+    margin-left: auto;
+}
+
+.restaurant-table{
+    background-color: aqua;
+    width: 100%;    
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
-.restaurent-header{
-    background-color: brown;
+.restaurant-table, tr, td{
+    border: 1px solid black;
 }
-.restaurent-table{
-    background-color: aqua;
-}
-.restaurent-table-header{
-    background-color: rgb(104, 104, 237);
+
+.restaurant-table-header{
+    background-color: rgb(149, 149, 235);
+    width: 100%; 
 }

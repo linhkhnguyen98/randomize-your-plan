@@ -3,19 +3,22 @@ import './Restaurants.css'
 
 const Restaurants = () => {
     return (
-      <div className='restaurent-box'>
-          <table className='restaurent-table'>
-            <tr className='restaurent-header'>
+      <div className='restaurant-box'>
+          <table className='restaurant-table'>
+            <tr className='restaurant-header'>
               Food to eat
             </tr>
-            <tr className='restaurent-table-header'>
-              Restaurants
+            <tr className='restaurant-table-header'>
+              <div className='restaurant-list-header'>
+                <div className='list-title2'>List</div>
+                <button className='btn2'>Add</button>
+              </div>
             </tr>
             <tr>
-              <td>Restaurant 1</td>
+              Restaurant 1
             </tr>
-            <tr>
-              <td>Restaurant 2</td>
+              <tr>
+              Restaurant 2
             </tr>
           </table>
       </div>

@@ -10,8 +10,8 @@ const Restaurants = () => {
             </tr>
             <tr className='restaurant-table-header'>
               <div className='restaurant-list-header'>
-                <div className='list-title2'>List</div>
-                <button className='btn2'>Add</button>
+                <div className='list-title2'>List of Things</div>
+                {/* <button className='btn2'>Add</button> */}
               </div>
             </tr>
             <tr>

@@ -11,14 +11,17 @@
 .restaurant-list-header{
     width: 100%;    
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
 .list-title2 {
-    flex: 1;
+    font-size: 1.4rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
 }
 
 .btn2{

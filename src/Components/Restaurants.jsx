@@ -1,26 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Restaurants.css'
+import SubmitButton from './SubmitButton.jsx';
+import RandomizeButton from './RandomizeButton.jsx';
 
 const Restaurants = () => {
+    const [items, setItems] = useState([]);
+
     return (
       <div className='restaurant-box'>
-          <table className='restaurant-table'>
-            <tr className='restaurant-header'>
-              Food to eat
-            </tr>
-            <tr className='restaurant-table-header'>
-              <div className='restaurant-list-header'>
-                <div className='list-title2'>List of Things</div>
-                {/* <button className='btn2'>Add</button> */}
-              </div>
-            </tr>
-            <tr>
-              Restaurant 1
-            </tr>
-              <tr>
-              Restaurant 2
-            </tr>
-          </table>
+          <SubmitButton items={items} setItems={setItems}/>
+          <RandomizeButton items={items}/>
       </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Activities.jsx';
@@ -13,11 +13,24 @@ const SubmitButton = ({items, setItems}) => {
         setItems([...items, newItem]); // newTitle gets added to items here
         setNewItem(""); // then cleared
         setOpen(false);
+
     }
     function handleNewItem(event) {
-        setNewItem(event.target.value); // this updates the input as you type
+        // setNewItem(event.target.value); // this updates the input as you type
         // console.log(event);
+        let itemArr = [...items, event.target.value];
+        // itemArr.push(newItem);
+        setNewItem(event.target.value);
+        localStorage.setItem('List of Things', JSON.stringify(itemArr));
     }
+
+    useEffect(()=>{
+        const data = localStorage.getItem('list');
+        if(data){
+            setItems(JSON.parse(data));
+        }
+    }, []);
+
     return (
         <table className='activities-table'>
         <tr className='activities-header'>
@@ -41,8 +54,14 @@ const SubmitButton = ({items, setItems}) => {
                 type="text"
                 className='input-box'
                 value={newItem}
-                onChange={handleNewItem} />
+                onChange={handleNewItem} 
+                onKeyDown={(e) => {
+                    if(e.key==="Enter")
+                        handleSubmit();
+                }}
+            />
             <button
+            // type="submit"
             onClick={handleSubmit}
             className='submit-button'
             >

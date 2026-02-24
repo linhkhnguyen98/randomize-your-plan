@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
 import './Activities.css'
-import './SubmitButton.jsx';
-import SubmitButton from './SubmitButton.jsx';
+import './SubmitButtonActivies.jsx';
+import SubmitButtonActivies from './SubmitButtonActivies.jsx';
 import RandomizeButton from './RandomizeButton.jsx';
 
 const Activities = () => {
@@ -11,8 +11,9 @@ const Activities = () => {
 
     return (
       <div className='activies-box'>
-          <SubmitButton items={items} setItems={setItems}/>
+          <SubmitButtonActivies items={items} setItems={setItems}/>
           <RandomizeButton items={items}/>
+
       </div>
     )
 }

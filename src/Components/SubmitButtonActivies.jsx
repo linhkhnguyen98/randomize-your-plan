@@ -4,78 +4,125 @@ import 'reactjs-popup/dist/index.css';
 import './Activities.jsx';
 
 const SubmitButton = ({items, setItems}) => {
-    // const [items, setItems] = useState([]);
     const [newItem, setNewItem] = useState("");
     const [open, setOpen] = useState(false);
+    const [editingId, setEditingId] = useState(null);
+    const [editValue, setEditValue] = useState("");
 
 
     const handleSubmit = () => {
-        setItems([...items, newItem]); // newTitle gets added to items here
-        setNewItem(""); // then cleared
+        const updatedItems = [...items, newItem];
+        // setItems([...items, newItem]); // newTitle gets added to items here
+        setItems(updatedItems); // then cleared
+        localStorage.setItem('List of Activies', JSON.stringify(updatedItems));
+        setNewItem("");
         setOpen(false);
 
     }
-    function handleNewItem(event) {
-        // setNewItem(event.target.value); // this updates the input as you type
-        // console.log(event);
-        let itemArr = [...items, event.target.value];
-        // itemArr.push(newItem);
-        setNewItem(event.target.value);
-        localStorage.setItem('List of Things', JSON.stringify(itemArr));
-    }
-
+    // look for the items from localStorage and load them when first load the page/refresh
     useEffect(()=>{
-        const data = localStorage.getItem('list');
+        const data = localStorage.getItem('List of Activies');
         if(data){
             setItems(JSON.parse(data));
         }
     }, []);
 
+    const startEdit = (id, currentValue) => {
+        setEditingId(id);
+        setEditValue(currentValue);
+    };
+
+    const saveEdit = (id) => {
+        const updatedItems = items.map((item, i) => i === id ? editValue : item);
+        setItems(updatedItems);
+        localStorage.setItem('List of Activies', JSON.stringify(updatedItems));
+        setEditingId(null); // Reset editingId back to null which swaps the input back to plain text
+        setEditValue("");
+    };
+
+    const removeItem = (id) => {
+    const updatedItems = items.filter((item, i) => i !== id);
+    setItems(updatedItems);
+    localStorage.setItem('List of Activies', JSON.stringify(updatedItems));
+    };
+
+
     return (
         <table className='activities-table'>
-        <tr className='activities-header'>
-            Things to do
-        </tr>
-        
-        <tr className='activities-table-header'>
-            <div className='activities-list-header'>
-            <div className='list-title1'>List of Things</div>
-            </div>
-        </tr>
-        
-        <tr>
-            <Popup 
-            open={open}
-            onOpen={() => setOpen(true)}
-            onClose={() => setOpen(false)}
-            trigger={<button>add</button>}
-            position="center">
-            <input 
-                type="text"
-                className='input-box'
-                value={newItem}
-                onChange={handleNewItem} 
-                onKeyDown={(e) => {
-                    if(e.key==="Enter")
-                        handleSubmit();
-                }}
-            />
-            <button
-            // type="submit"
-            onClick={handleSubmit}
-            className='submit-button'
-            >
-                submit
-            </button>
-            </Popup>
-        </tr>
-        <tbody>
-            {items.map((item, id) => (
-            <tr key={id}>
-                <td>{item}</td>
-            </tr>
-            ))}
-        </tbody>
+            <thead>
+                <tr className='activities-header'>
+                    <th>Things to do</th>
+                </tr>
+                <tr className='activities-table-header'>
+                    <th className='activities-list-header'>
+                        <div className='list-title1'>List of Activities</div>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <Popup 
+                        open={open}
+                        onOpen={() => setOpen(true)}
+                        onClose={() => setOpen(false)}
+                        trigger={<button>add</button>}
+                        position="center">
+                        <input 
+                            type="text"
+                            className='input-box'
+                            value={newItem}
+                            onChange={(e) => setNewItem(e.target.value)}
+                            onKeyDown={(e) => {
+                                if(e.key==="Enter")
+                                    handleSubmit();
+                            }}
+                        />
+                        <button onClick={handleSubmit} className='submit-button'>
+                            submit
+                        </button>
+                        </Popup>
+                    </td>
+                </tr>
+            </thead>
+            {/* <tbody>
+                {items.map((item, id) => (
+                <tr key={id}>
+                    <td>{item}</td>
+                </tr>
+                ))}
+            </tbody> */}
+            <tbody>
+                {items.map((item, id) => (
+                    <tr key={id}>
+                        <td>
+                            {editingId === id ? (
+                                // if this row this being edited, show input field
+                                <input
+                                    type="text"
+                                    value={editValue}
+                                    onChange={(e) => setEditValue(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter") saveEdit(id);
+                                        if (e.key === "Escape") setEditingId(null);
+                                    }}
+                                    autoFocus
+                                />
+                            // if not show plain text
+                            ) : (
+                                item
+                            )}
+                        </td>
+                         {/* Swap the button between edit and save */}
+                        <td>
+                            {editingId === id ? (
+                                <button onClick={() => saveEdit(id)}>save</button>
+                            ) : (
+                                <button onClick={() => startEdit(id, item)}>edit</button>
+                            )}
+                            <button onClick={() => removeItem(id)}>remove</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }

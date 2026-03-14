@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './Restaurants.jsx';
+import './Activities.css';
 
 const SubmitButton = ({items, setItems}) => {
     const [newItem, setNewItem] = useState("");
@@ -48,23 +48,21 @@ const SubmitButton = ({items, setItems}) => {
 
 
     return (
-        <table className='restaurant-table'>
+        <table className='activities-table'>
             <thead>
-                <tr className='restaurant-header'>
-                    <th>Where to Eat</th>
+                <tr>
+                    <th className='activities-header'>Where to Eat</th>
                 </tr>
-                <tr className='restaurant-table-header'>
-                    <th className='restaurant-list-header'>
-                        <div className='list-title2'>List of Restaurants</div>
-                    </th>
+                <tr className='activities-table-header'>
+                    <th className='activities-list-header'>List of Restaurants</th>
                 </tr>
                 <tr>
-                    <td>
+                    {/* <td>
                         <Popup 
                         open={open}
                         onOpen={() => setOpen(true)}
                         onClose={() => setOpen(false)}
-                        trigger={<button>add</button>}
+                        trigger={<button>Add Your Decisions</button>}
                         position="center">
                         <input 
                             type="text"
@@ -80,6 +78,34 @@ const SubmitButton = ({items, setItems}) => {
                             submit
                         </button>
                         </Popup>
+                    </td> */}
+                    <td className='addButton-noBorder'>
+                        <button onClick={() => setOpen(!open)}>
+                            Add Your Decisions
+                        </button>
+
+                        {open && (
+                            <>
+                                        {/* clicking the overlay closes the popup */}
+                                <div className="overlay" onClick={() => setOpen(false)} />
+                                <div className="popup-container">
+                                    <input
+                                        type="text"
+                                        className='input-box'
+                                        value={newItem}
+                                        autoFocus
+                                        onChange={(e) => setNewItem(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") handleSubmit();
+                                            if (e.key === "Escape") setOpen(false);
+                                        }}
+                                    />
+                                    <button onClick={handleSubmit} className='submit-button'>
+                                        Submit
+                                    </button>
+                                </div>
+                            </>
+                        )}
                     </td>
                 </tr>
             </thead>
@@ -112,13 +138,13 @@ const SubmitButton = ({items, setItems}) => {
                             )}
                         </td>
                          {/* Swap the button between edit and save */}
-                        <td>
+                        <td className="button-cell">
                             {editingId === id ? (
-                                <button onClick={() => saveEdit(id)}>save</button>
+                                <button className='save-noBorder' onClick={() => saveEdit(id)}>save</button>
                             ) : (
-                                <button onClick={() => startEdit(id, item)}>edit</button>
+                                <button className='edit-noBorder' onClick={() => startEdit(id, item)}>edit</button>
                             )}
-                            <button onClick={() => removeItem(id)}>remove</button>
+                            <button className='remove-noBorder' onClick={() => removeItem(id)}>remove</button>
                         </td>
                     </tr>
                 ))}

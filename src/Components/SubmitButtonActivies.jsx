@@ -50,36 +50,67 @@ const SubmitButton = ({items, setItems}) => {
     return (
         <table className='activities-table'>
             <thead>
-                <tr className='activities-header'>
-                    <th>Things to do</th>
+                <tr>
+                    <th className='activities-header'>Things to do</th>
                 </tr>
                 <tr className='activities-table-header'>
-                    <th className='activities-list-header'>
+                    {/* <th className='activities-list-header'>
                         <div className='list-title1'>List of Activities</div>
-                    </th>
+                    </th> */}
+                    <th className='activities-list-header'>List of Activities</th>
                 </tr>
                 <tr>
-                    <td>
+                    {/* <td className='addButton-noBorder'>
                         <Popup 
                         open={open}
                         onOpen={() => setOpen(true)}
                         onClose={() => setOpen(false)}
-                        trigger={<button>add</button>}
+                        trigger={<button>Add Your Decisions</button>}
                         position="center">
-                        <input 
-                            type="text"
-                            className='input-box'
-                            value={newItem}
-                            onChange={(e) => setNewItem(e.target.value)}
-                            onKeyDown={(e) => {
-                                if(e.key==="Enter")
-                                    handleSubmit();
-                            }}
-                        />
-                        <button onClick={handleSubmit} className='submit-button'>
-                            submit
-                        </button>
+                        <div className="popup-container">
+                            <input
+                                type="text"
+                                className='input-box'
+                                value={newItem}
+                                onChange={(e) => setNewItem(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if(e.key==="Enter")
+                                        handleSubmit();
+                                }}
+                            />
+                            <button onClick={handleSubmit} className='submit-button'>
+                                submit
+                            </button>
+                        </div>
                         </Popup>
+                    </td> */}
+                    <td className='addButton-noBorder'>
+                        <button onClick={() => setOpen(!open)}>
+                            Add Your Decisions
+                        </button>
+
+                        {open && (
+                            <>
+                                        {/* clicking the overlay closes the popup */}
+                                <div className="overlay" onClick={() => setOpen(false)} />
+                                <div className="popup-container">
+                                    <input
+                                        type="text"
+                                        className='input-box'
+                                        value={newItem}
+                                        autoFocus
+                                        onChange={(e) => setNewItem(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") handleSubmit();
+                                            if (e.key === "Escape") setOpen(false);
+                                        }}
+                                    />
+                                    <button onClick={handleSubmit} className='submit-button'>
+                                        Submit
+                                    </button>
+                                </div>
+                            </>
+                        )}
                     </td>
                 </tr>
             </thead>
@@ -112,13 +143,13 @@ const SubmitButton = ({items, setItems}) => {
                             )}
                         </td>
                          {/* Swap the button between edit and save */}
-                        <td>
+                        <td className="button-cell">
                             {editingId === id ? (
-                                <button onClick={() => saveEdit(id)}>save</button>
+                                <button className='save-noBorder' onClick={() => saveEdit(id)}>save</button>
                             ) : (
-                                <button onClick={() => startEdit(id, item)}>edit</button>
+                                <button className='edit-noBorder' onClick={() => startEdit(id, item)}>edit</button>
                             )}
-                            <button onClick={() => removeItem(id)}>remove</button>
+                            <button className='remove-noBorder' onClick={() => removeItem(id)}>remove</button>
                         </td>
                     </tr>
                 ))}

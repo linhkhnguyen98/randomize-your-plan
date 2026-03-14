@@ -1,12 +1,13 @@
 .activies-box{
-    background-color: rgb(103, 113, 189);
+    /* background-color: rgb(103, 113, 189); */
     width: 100%;
     font-size: 1.3em;
-    
+    border: 1px solid black;
 }
 .activities-header{
-    background-color: rgb(235, 142, 142);
-    font-size: 1.4em;
+    /* background-color: rgb(235, 142, 142); */
+    font-size: 1.5em;
+    padding: 10px;
 }
 
 .activities-list-header{
@@ -14,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .list-title1 {
@@ -26,26 +28,107 @@
     border: 1px solid black;
 }
 
+button{
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(196, 140, 225);
+}
+
+button:hover{
+    background-color:rgb(171, 101, 206);
+}
+
 .btn1{
     /* flex: 0.1; */
     
     margin: auto;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 99;
+}
+
+.popup-container {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px;
+    background: #c3a1eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    min-width: 260px;
+}
+
+.input-box {
+    width: 80%;
+    padding: 10px 14px;
+    border: 2px solid rgb(171, 101, 206);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
 .activities-table{
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 100%;    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    /* padding: 0.5rem 0.5rem 0.5rem 0.5rem; */
+    padding: 20px 20px 20px 20px;
 }
+/*  
 .activities-table, tr, td {
-    border: 1px solid black;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border: none;
+    padding: 20px 20px 20px 20px;
+*/
+.activities-table,
+.activities-table tr,
+.activities-table td {
+    /* border: 1px solid black;; */
+    padding: 15px;
+}
+.addButton-noBorder{
+    border: none !important;
+    position: relative;
+}
+
+.add-noBorder{
+    border: none !important;
+}
+
+.save-noBorder{
+    border: none !important;
+}
+
+.edit-noBorder{
+    border: none !important;
+}
+
+.remove-noBorder{
+    border: none !important;
+}
+
+.button-cell {
+    display: flex;
+    position: relative;
+    gap: 10px;
 }
 .activities-table-header{
-    background-color: rgb(149, 149, 235);
+    /* background-color: rgb(149, 149, 235); */
     width: 100%; 
 }

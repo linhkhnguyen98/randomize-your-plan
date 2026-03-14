@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Activities.jsx';
 
@@ -25,7 +25,7 @@ const SubmitButton = ({items, setItems}) => {
         if(data){
             setItems(JSON.parse(data));
         }
-    }, []);
+    }, [setItems]);
 
     const startEdit = (id, currentValue) => {
         setEditingId(id);

@@ -2,6 +2,7 @@
     /* background-color: rgb(103, 113, 189); */
     width: 100%;
     font-size: 1.3em;
+    box-sizing: border-box;
     border: 1px solid black;
 }
 .activities-header{
@@ -88,6 +89,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     /* padding: 0.5rem 0.5rem 0.5rem 0.5rem; */
     padding: 20px 20px 20px 20px;
 }
@@ -101,6 +103,7 @@ button:hover{
 .activities-table td {
     /* border: 1px solid black;; */
     padding: 15px;
+    box-sizing: border-box;
 }
 .addButton-noBorder{
     border: none !important;
@@ -131,4 +134,97 @@ button:hover{
 .activities-table-header{
     /* background-color: rgb(149, 149, 235); */
     width: 100%; 
+}
+
+
+@media (max-width: 480px) {
+    .activities-table {
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 0.9em;
+    }
+
+    .activities-table,
+    .activities-table tr,
+    .activities-table td {
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .button-cell {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .popup-container {
+        min-width: 0;
+        width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    .activities-header {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .activities-list-header {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .activities-table {
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 0.9em;
+    }
+
+    .activities-table,
+    .activities-table tr,
+    .activities-table td {
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .button-cell {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .popup-container {
+        min-width: 0;
+        width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .input-box {
+        width: 100%;
+    }
+
+    .activities-header {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .activities-list-header {
+        padding: 8px;
+    }
 }

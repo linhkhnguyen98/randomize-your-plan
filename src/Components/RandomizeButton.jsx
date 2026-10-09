@@ -9,9 +9,11 @@ const RandomizeButton = ({items}) => {
         setRandomItem(items[randomIndex]);
     }
     return(
-        <div>
+        <div className='randomize-button'>
             <button onClick={handleRandom}>Pick Random</button>
             <p>{randomItem}</p>
+
+            <button>Delete All</button>
         </div>
     )
 }

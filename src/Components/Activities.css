@@ -40,6 +40,15 @@ button:hover{
     background-color:rgb(171, 101, 206);
 }
 
+.randomize-button{
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+}
+
 .btn1{
     /* flex: 0.1; */
     
